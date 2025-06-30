@@ -1,42 +1,41 @@
 {
   "expo": {
-    "name": "macrossover-app",
-    "slug": "macrossover-app",
+    "name": "MACrossover",
+    "slug": "macrossover",
+    "scheme": "macrossover",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
-    "scheme": "macrossoverapp",
     "userInterfaceStyle": "automatic",
     "newArchEnabled": true,
     "ios": {
+      "bundleIdentifier": "com.macrossover.app",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.macrossover.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "permissions": []
     },
     "web": {
-      "bundler": "metro",
-      "output": "static",
-      "favicon": "./assets/images/favicon.png"
+      "favicon": "./assets/images/favicon.ico"
+    },
+    "splash": {
+      "image": "./assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
     },
     "plugins": [
-      "expo-router",
-      [
-        "expo-splash-screen",
-        {
-          "image": "./assets/images/splash-icon.png",
-          "imageWidth": 200,
-          "resizeMode": "contain",
-          "backgroundColor": "#ffffff"
-        }
-      ]
+      "expo-splash-screen"
     ],
-    "experiments": {
-      "typedRoutes": true
+    "extra": {
+      "webviewUrl": "https://macrossover.com",
+      "eas": {
+        "projectId": "ad78a513-57d9-420f-b1ae-10b521d00f62"
+      }
     }
   }
 }
