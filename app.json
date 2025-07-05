@@ -29,7 +29,8 @@
       "backgroundColor": "#ffffff"
     },
     "plugins": [
-      "expo-splash-screen"
+      "expo-splash-screen",
+      "expo-notifications"
     ],
     "extra": {
       "webviewUrl": "https://macrossover.com",
