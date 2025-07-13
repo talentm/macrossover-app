@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "396327500909",
+    "project_id": "macrossover-push",
+    "storage_bucket": "macrossover-push.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396327500909:android:88fd583e54ec10a6255364",
+        "android_client_info": {
+          "package_name": "com.macrossover.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzRMpawMPn9TK4geTbMzpwWgOK6m_Pp-c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
