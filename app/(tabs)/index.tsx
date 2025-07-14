@@ -28,6 +28,7 @@ export default function HomeScreen() {
         if (token) {
           setPushToken(token);
           console.log('Retrieved push token for WebView:', token);
+          console.log('WebView ref current:', webViewRef.current ? 'exists' : 'null');
           
           // Inject the token into the WebView if it's already loaded
           if (webViewRef.current) {
@@ -38,7 +39,12 @@ export default function HomeScreen() {
               })();
             `;
             webViewRef.current.injectJavaScript(injectTokenScript);
+            console.log('Token injection script executed');
+          } else {
+            console.log('WebView not ready yet, will inject when PAGE_READY received');
           }
+        } else {
+          console.log('No push token found in AsyncStorage');
         }
       })
       .catch(error => {
@@ -74,15 +80,24 @@ export default function HomeScreen() {
   const handleMessage = (event: any) => {
     try {
       const data = JSON.parse(event.nativeEvent.data);
-      if (data.type === 'PAGE_READY' && pushToken) {
-        // Page is ready, inject the token
-        const injectTokenScript = `
-          (function() {
-            localStorage.setItem('expoPushToken', '${pushToken}');
-            console.log('Push token injected after page ready:', '${pushToken}');
-          })();
-        `;
-        webViewRef.current?.injectJavaScript(injectTokenScript);
+      console.log('WebView message received:', data.type);
+      
+      if (data.type === 'PAGE_READY') {
+        console.log('Page ready received, pushToken state:', pushToken);
+        
+        if (pushToken) {
+          // Page is ready, inject the token
+          const injectTokenScript = `
+            (function() {
+              localStorage.setItem('expoPushToken', '${pushToken}');
+              console.log('Push token injected after page ready:', '${pushToken}');
+            })();
+          `;
+          webViewRef.current?.injectJavaScript(injectTokenScript);
+          console.log('Token injection script executed after page ready');
+        } else {
+          console.log('No push token available yet when page became ready');
+        }
       }
     } catch (error) {
       console.error('Error parsing WebView message:', error);
